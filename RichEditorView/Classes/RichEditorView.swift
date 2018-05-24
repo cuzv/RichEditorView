@@ -41,6 +41,8 @@ import UIKit
 
     // MARK: Public Properties
 
+    open var autoScrollCaretToVisible: Bool = true
+    
     /// The delegate that will receive callbacks when certain actions are completed.
     open weak var delegate: RichEditorDelegate?
 
@@ -462,6 +464,10 @@ import UIKit
         
         let contentHeight = clientHeight > 0 ? CGFloat(clientHeight) : scrollView.frame.height
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
+        
+        if !autoScrollCaretToVisible {
+            return
+        }
         
         // XXX: Maybe find a better way to get the cursor height
         let lineHeight = CGFloat(self.lineHeight)
