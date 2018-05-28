@@ -466,6 +466,7 @@ import UIKit
         scrollView.contentSize = CGSize(width: scrollView.frame.width, height: contentHeight)
         
         if !autoScrollCaretToVisible {
+            scrollView.contentOffset = .zero
             return
         }
         
