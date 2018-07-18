@@ -137,8 +137,6 @@ import UIKit
     }
     
     private func setup() {
-        backgroundColor = .red
-        
         webView.frame = bounds
         webView.delegate = self
         webView.keyboardDisplayRequiresUserAction = false
