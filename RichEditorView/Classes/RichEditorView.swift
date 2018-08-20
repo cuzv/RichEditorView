@@ -470,20 +470,17 @@ import UIKit
         
         // XXX: Maybe find a better way to get the cursor height
         let lineHeight = CGFloat(self.lineHeight)
-        let cursorHeight = lineHeight - 4
-        let visiblePosition = CGFloat(relativeCaretYPosition)
+        let visiblePosition = CGFloat(relativeCaretYPosition) + lineHeight
         var offset: CGPoint?
 
-        if visiblePosition + cursorHeight > scrollView.bounds.size.height {
+        if visiblePosition > scrollView.bounds.size.height {
             // Visible caret position goes further than our bounds
-            offset = CGPoint(x: 0, y: (visiblePosition + lineHeight) - scrollView.bounds.height + scrollView.contentOffset.y)
-
+            offset = CGPoint(x: 0, y: visiblePosition - scrollView.bounds.height + scrollView.contentOffset.y)
         } else if visiblePosition < 0 {
             // Visible caret position is above what is currently visible
             var amount = scrollView.contentOffset.y + visiblePosition
             amount = amount < 0 ? 0 : amount
             offset = CGPoint(x: scrollView.contentOffset.x, y: amount)
-
         }
 
         if let offset = offset {
