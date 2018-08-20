@@ -119,7 +119,7 @@ import UIKit
     /// Fetches it from JS every time, so might be slow!
     private var clientHeight: Int {
         let heightString = runJS("document.getElementById('editor').clientHeight;")
-        return Int(heightString) ?? 0
+        return Int(ceil(Double(heightString) ?? 0))
     }
 
     // MARK: Initialization
@@ -443,7 +443,7 @@ import UIKit
     /// Can also return 0 if some sort of error occurs between JS and here.
     private var relativeCaretYPosition: Int {
         let string = runJS("RE.getRelativeCaretYPosition();")
-        return Int(string) ?? 0
+        return Int(ceil(Double(string) ?? 0))
     }
 
     private func updateHeight() {
