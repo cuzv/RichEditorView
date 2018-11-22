@@ -443,7 +443,11 @@ import UIKit
     /// Can also return 0 if some sort of error occurs between JS and here.
     private var relativeCaretYPosition: Int {
         let string = runJS("RE.getRelativeCaretYPosition();")
-        return Int(ceil(Double(string) ?? 0))
+        var value = Double(string) ?? 0
+        if value.isNaN {
+           value = 0
+        }
+        return Int(ceil(value))
     }
 
     private func updateHeight() {
