@@ -154,7 +154,7 @@ import UIKit
         
         self.addSubview(webView)
         
-        if let filePath = Bundle(for: RichEditorView.self).path(forResource: "rich_editor", ofType: "html") {
+        if let filePath = Bundle(path: Bundle(for: RichEditorView.self).path(forResource: "RichEditorView", ofType: "bundle") ?? "")?.path(forResource: "rich_editor", ofType: "html") {
             let url = URL(fileURLWithPath: filePath, isDirectory: false)
             let request = URLRequest(url: url)
             webView.loadRequest(request)

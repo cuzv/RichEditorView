@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'RichEditorView/Classes/*'
-  s.resources = [
+  s.resource_bundles = {"RichEditorView" => [
       'RichEditorView/Assets/icons/*',
       'RichEditorView/Assets/editor/*'
-    ]
+    ]}
 end
