@@ -113,7 +113,12 @@ public enum RichEditorDefaultOption: RichEditorOption {
         case .link: name = "insert_link"
         }
         
-        let bundle = Bundle(path: Bundle(for: RichEditorToolbar.self).path(forResource: "RichEditorView", ofType: "bundle") ?? "")
+        var bundle = Bundle(for: RichEditorToolbar.self)
+        if let resourcePath = bundle.path(forResource: "RichEditorView", ofType: "bundle") {
+            if let resourcesBundle = Bundle(path: resourcePath) {
+                bundle = resourcesBundle
+            }
+        }
         return UIImage(named: name, in: bundle, compatibleWith: nil)
     }
     
